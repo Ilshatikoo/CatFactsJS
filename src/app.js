@@ -1,6 +1,6 @@
 import express from 'express';
-import breedsRouter from './routes/breeds.js';
-import factsRouter from './routes/facts.js';
+import breedsRouter from './routes/breedsRouter.js';
+import factsRouter from './routes/factsRouter.js';
 
 const PORT = process.env.PORT || 5000;
 const app = express();

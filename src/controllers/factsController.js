@@ -1,11 +1,9 @@
-import express from 'express';
 import fs from 'fs';
 
-const router = express.Router();
 const factsData = fs.readFileSync('./src/data/facts.json');
 const facts = JSON.parse(factsData).facts;
 
-router.get('/facts', (req, res) => {
+const getFacts = (req, res) => {
   const limit = parseInt(req.query.limit);
 
   let response;
@@ -28,9 +26,9 @@ router.get('/facts', (req, res) => {
   }
 
   res.status(200).json(response);
-});
+};
 
-router.get('/fact', (req, res) => {
+const getRandomFact = (req, res) => {
   const maxLength = parseInt(req.query.max_length);
 
   if (!maxLength) {
@@ -46,6 +44,6 @@ router.get('/fact', (req, res) => {
       res.status(200).json(randomFact);
     }
   }
-});
+};
 
-export default router;
+export { getFacts, getRandomFact };

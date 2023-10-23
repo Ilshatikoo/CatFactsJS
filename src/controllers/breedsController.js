@@ -1,12 +1,11 @@
-import express from 'express';
 import fs from 'fs';
 
-const router = express.Router();
 const breedsData = fs.readFileSync('./src/data/breeds.json');
 const breeds = JSON.parse(breedsData).breeds;
 
-router.get('/breeds', (req, res) => {
-  const DEFAULT_LIMIT = 10;
+const DEFAULT_LIMIT = 10;
+
+const getBreeds = (req, res) => {
   const DEFAULT_PAGE = 1;
 
   const limit = parseInt(req.query.limit) || DEFAULT_LIMIT;
@@ -26,6 +25,6 @@ router.get('/breeds', (req, res) => {
   } else {
     res.status(200).json(response);
   }
-});
+};
 
-export default router;
+export { getBreeds };
