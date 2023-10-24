@@ -10,6 +10,8 @@ app.use(express.json());
 app.use('/api', breedsRouter);
 app.use('/api', factsRouter);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+module.exports = server;
